@@ -1,25 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import Routes from './routes'
+import './global.css'
+//Quando HTML é escrito dentro do javaScript se chama : JSX(JavaScript XML)
+//Todo componente do React deve ter a primeira letra Maiúscula, caso contrário não irá funcionar
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello Omnistack
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <Routes />
   );
 }
 
