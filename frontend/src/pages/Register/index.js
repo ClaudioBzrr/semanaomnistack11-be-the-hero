@@ -5,6 +5,7 @@ import logo from '../../assets/logo.svg'
 import {FiArrowLeft} from 'react-icons/fi'
 import {Link, useHistory} from 'react-router-dom'
 import api from '../../services/api'
+import swal from 'sweetalert';
 
 
 
@@ -30,7 +31,11 @@ export default function Register(){
       try{
         const response = await api.post('ongs',data)//ja envia os dados em json
         
-        alert(`Seu ID de acesso: ${response.data.id}`)
+       swal({
+           title:'Sucesso',
+           text:`Seu ID de acesso: ${response.data.id}`,
+           icon:"success"
+        })
         history.push('/')
       }catch(err){
           alert('Erro no cadastro,tente novamente')

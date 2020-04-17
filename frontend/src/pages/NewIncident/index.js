@@ -3,6 +3,7 @@ import api from '../../services/api'
 import {FiArrowLeft} from 'react-icons/fi'
 import {Link, useHistory} from 'react-router-dom'
 import logo from '../../assets/logo.svg'
+import swal from 'sweetalert';
 import './styles.css'
 
 export default function NewIncident(){
@@ -10,8 +11,8 @@ export default function NewIncident(){
     const [description,setDescription] = useState('')
     const [value, setValue] = useState('')
     
-    const history = useHistory()
     const ongId = localStorage.getItem('ongId')
+    const history = useHistory()
 
     async function handleNewIncident(e){
         
@@ -23,20 +24,22 @@ export default function NewIncident(){
 
         try{
 
-            api.post('incidents',data,{
+            await api.post('incidents',data,{
                 headers:{
                     Authorization:ongId,
                 }
-                
             })
-
-        
-        history.push('/profile')
+            history.push('/profile')        
+            
         }catch(err){
-            alert('Erro ao cadastrar caso, tente novamente.')
+            swal({
+                title:"Error!",
+                text:"Ocorreu um erro ao cadastrar o caso",
+                icon:"error",
+            })
         }
- 
-
+        
+        
     }
 
     return(
